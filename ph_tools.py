@@ -15,5 +15,8 @@ def res_po (k_in, k_out, na_in, na_out, cl_in, cl_out, ca_in, ca_out, pk, pna, p
     T = t + 273.15
     return (R*T/F)*np.log(((pk * k_out) + (pna * na_out) + (pcl * cl_in) + (pca * ca_out))/( (pk * k_in) + (pna * na_in) + (pcl * cl_out) + (pca * ca_in)))
 
+#Calculo de la pendiente
+def pend (y2, y1, x2, x1):
+    return (y2 - y1) / (x2 - x1)
 
 
