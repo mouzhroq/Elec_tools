@@ -48,7 +48,7 @@ ax2.set(xlabel = "Voltaje (mV)", ylabel = "Corriente (pA)", title = "Corriente 3
 fig.savefig("Corrientes.png")
 plt.show()
 
-print "Conductancia 1: %.3f" % pt.pend (txt[10,1], txt[0,1], txt[10,0], txt[0,0])
-print "Conductancia 2: %.3f" % pt.pend (txt[10,2], txt[0,2], txt[10,0], txt[0,0])
-print "Conductancia 3: %.3f" % pt.pend (txt[10,3], txt[0,3], txt[10,0], txt[0,0])
+print "Conductancia 1: %.3f" % pt.pend (txt[:,0], txt[:,1])
+print "Conductancia 2: %.3f" % pt.pend (txt[:,0], txt[:,2])
+print "Conductancia 3: %.3f" % pt.pend (txt[:,0], txt[:,3])
 
