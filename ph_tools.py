@@ -21,3 +21,8 @@ def pend (x, y):
     return (y[len(y)-1] - y[0]) / (x[len(x)-1] - x[0])
 
 
+#Multiplicacion matriz por vector
+def mul (matriz, vector, N):
+    for i in range (1, int(N)+1):
+        vector = np.append(vector, matriz * vector[:,i-1], axis=1)
+    return vector
