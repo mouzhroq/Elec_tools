@@ -23,6 +23,17 @@ def pend (x, y):
 
 #Multiplicacion matriz por vector
 def mul (matriz, vector, N):
-    for i in range (1, int(N)+1):
+    for i in range (1, N+1):
         vector = np.append(vector, matriz * vector[:,i-1], axis=1)
     return vector
+
+#Simulacion MonteCarlo
+def simc (vector, ind, N):
+    al = np.random.rand(N + 1)
+    s = np.array([])
+    for i in range (0, N+1):
+        if al[i] <= vector[ind, i]:
+            s = np.append(s, 1)
+        else:
+            s = np.append(s, 0)
+    return s
