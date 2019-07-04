@@ -14,14 +14,13 @@ p0 = np.matrix([1, 0]).transpose()
 
 p1 = pt.mul(Q1, p0, N)
 p2 = pt.mul(Q2, p0, N)
-p3 = pt.mul(Q2, p0, N)
+p3 = pt.mul(Q3, p0, N)
 
 s1 = pt.simc(p1, 1, N)
 s2 = pt.simc(p2, 1, N)
 s3 = pt.simc(p3, 1, N)
 
 fig, (ax0, ax1, ax2) = plt.subplots(3, sharex=True)
-
 ax0.plot(t, s1)
 ax0.set(title='k+=0.1 & k-=0.1')
 ax1.plot(t, s2)
@@ -81,17 +80,17 @@ for i in range(len(v)):
     Q12 = np.append(Q12, np.array([[1-q01*dt-q02*dt, q10*dt, q20*dt], [q01*dt, 1-q10*dt-q12*dt, q21*dt], [q02*dt, q12*dt, 1-q20*dt-q21*dt]]))
 
 Q12 = np.reshape(Q12, (4,3,3))
-p02 = np.matrix([1, 0, 0]).transpose()
+p02 = np.matrix([0, 0, 1]).transpose()
 
 p012 = pt.mul(Q12[0,:,:], p02, N)
 p022 = pt.mul(Q12[1,:,:], p02, N)
 p032 = pt.mul(Q12[2,:,:], p02, N)
 p042 = pt.mul(Q12[3,:,:], p02, N)
 
-s012 = pt.simc(p012, 2, N) 
-s022 = pt.simc(p022, 2, N)
-s032 = pt.simc(p032, 2, N)
-s042 = pt.simc(p042, 2, N)
+s012 = pt.simc(p012, 0, N) 
+s022 = pt.simc(p022, 0, N)
+s032 = pt.simc(p032, 0, N)
+s042 = pt.simc(p042, 0, N)
 
 fig, (ax0, ax1, ax2, ax3) = plt.subplots(4, sharex=True, sharey=True)
 
@@ -104,5 +103,5 @@ ax2.set(title='V=40')
 ax3.plot(t, s042)
 ax3.set(title='V=80', xlabel='t (ms)')
 
-fig.savefig('Simulacion21.png')
+#fig.savefig('Simulacion21.png')
 plt.show()

@@ -37,3 +37,28 @@ def simc (vector, ind, N):
         else:
             s = np.append(s, 0)
     return s
+
+def tiempo (vector, vector_tiempo, bins):
+    di = np.diff(vector)
+    ti = np.array([0])
+    for i in range (len (di)):
+        temp = np.abs(di[i])
+        if di[i] != 0 and di[i]>0.01:
+            ti=np.append(ti, vector_tiempo[i-1])
+    ti = np.diff(ti)
+    bins_ab = np.arange(0, max(ti[1::2]), bins)
+    bins_ce = np.arange(0, max(ti[::2]), bins)
+    return ti[1::2], ti[::2], bins_ab, bins_ce
+
+def protoc (vv, vt, tmin, tmax, vreposo):
+    vol = np.array([])
+    for j in range (len(vv)):
+        temp = np.array([])
+        for i in range (len(vt)):
+            if i > tmin and i< tmax:
+                temp = np.append(temp, vv[j])
+            else:
+                temp = np.append(temp, vreposo)
+        vol = np.append(vol, temp)
+    vol = vol.reshape(len(vv), len(vt))
+    return vol
